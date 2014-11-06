@@ -24,14 +24,17 @@ spa.shell = (function () {
       chat_extend_height: 450,
       chat_retract_height: 15,
       chat_extended_title: 'Click to retract',
-      chat_retracted_title: 'Click to extend'
+      chat_retracted_title: 'Click to extend',
+      resize_interval: 200
     },
     stateMap = {
-      anchor_map: {}
+      $container: undefined,
+      anchor_map: {},
+      resize_idto: undefined
     },
     jqueryMap = {},
     copyAnchorMap, setJqueryMap,
-    changeAnchorPart, onHashchange,
+    changeAnchorPart, onHashchange, onResize,
     setChatAnchor, initModule;
   // ----- モジュールスコープ変数終了 -----
 
@@ -96,6 +99,21 @@ spa.shell = (function () {
   // ----- DOMメソッド終了 -----
 
   // ----- イベントハンドラ開始 -----
+  onResize = function () {
+    // リサイズインターバルの管理
+    if (stateMap.resize_idto) {
+      return true;
+    }
+
+    spa.chat.handleResize();
+    stateMap.resize_idto = setTimeout(
+      function () {stateMap.resize_idto = undefined; },
+      configMap.resize_interval
+    );
+
+    return true;
+  };
+
   onHashchange = function (event) {
     var
       anchor_map_previous = copyAnchorMap(),
@@ -178,6 +196,7 @@ spa.shell = (function () {
 
     // URIアンカー変更イベントを処理する
     $(window)
+      .bind('resize', onResize)
       .bind('hashchange', onHashchange)
       .trigger('hashchange');
 
