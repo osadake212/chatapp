@@ -148,6 +148,7 @@ spa.model = (function () {
     initModule = function () {
       var i, people_list, person_map;
 
+      clearPeopleDb();
       // 匿名ユーザーを初期化する
       stateMap.anon_user = makePerson({
         cid: configMap.anon_id,
