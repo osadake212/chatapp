@@ -153,7 +153,7 @@ spa.model = (function () {
         _publish_listchange, _publish_updatechat,
         _update_list, _leave_chat, join_chat,
         get_chatee, send_msg, set_chatee,
-        chatee = null;
+        chatee = null, update_avatar;
 
         // ユーザーリストを更新する
         _update_list = function (arg_list) {
@@ -292,12 +292,29 @@ spa.model = (function () {
           return true;
         };
 
+        // avatar_update_map
+        // {
+        //   person_id: <string>,
+        //   css_map: {
+        //     top: <int>,
+        //     left: <int>,
+        //     'background-color': <string>
+        //   }
+        // }
+        update_avatar = function (avatar_update_map) {
+          var sio = isFakeData ? spa.fake.mockSio : spa.data.getSio();
+          if (sio) {
+            sio.emit('updateavatar', avatar_update_map);
+          }
+        };
+
         return {
           _leave: _leave_chat,
           get_chatee: get_chatee,
           join: join_chat,
           send_msg: send_msg,
-          set_chatee: set_chatee
+          set_chatee: set_chatee,
+          update_avatar: update_avatar
         };
     }());
 
