@@ -36,7 +36,7 @@ spa.model = (function () {
 
     clearPeopleDb = function () {
       var user = stateMap.user;
-      stateMap.peoplr_db = TAFFY();
+      stateMap.people_db = TAFFY();
       stateMap.people_cid_map = {};
       if (user) {
         stateMap.people_db.insert(user);
@@ -163,11 +163,9 @@ spa.model = (function () {
               id: person_map._id,
               name: person_map.name
             };
-            person = makePerson(make_person_map);
 
             if (chatee && chatee.id === make_person_map.id) {
               is_chatee_online = true;
-              chatee = person;
             }
 
             makePerson(make_person_map);
