@@ -202,7 +202,7 @@ spa.avtr = (function () {
     };
 
     onLogout = function (event) {
-      jqueryMap.$container.emtpy();
+      jqueryMap.$container.empty();
     };
 
     // ----- パブリックメソッド -----
