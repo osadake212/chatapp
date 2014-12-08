@@ -139,7 +139,7 @@ spa.model = (function () {
 
         // ユーザーリストを更新する
         _update_list = function (arg_list) {
-          var i, person_map, make_person_map, person,
+          var i, person_map, make_person_map,
             people_list = arg_list[0],
             is_chatee_online = false;
 
