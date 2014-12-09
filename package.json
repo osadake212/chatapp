@@ -1,0 +1,11 @@
+{
+  "name": "SPA",
+  "version": "0.0.3",
+  "private": true,
+  "dependencies": {
+    "gulp": "3.8.10",
+    "gulp-jslint": "0.2.1",
+    "connect": "3.3.3",
+    "express": "3.2.x"
+  }
+}
