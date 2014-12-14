@@ -1,12 +1,9 @@
 var gulp = require('gulp');
 var jslint = require('gulp-jslint');
+var createJsLint;
 
-gulp.task('watch', function (callback) {
-
-  var path = "public/js/*.js";
-  gulp.watch(path, function(e) {
-    console.log("---------JSLint Task---------")
-    return gulp.src(path)
+createJsLint = function (gulp, path) {
+  return gulp.src(path)
             .pipe(jslint({
               browser: true,
               continue: true,
@@ -28,6 +25,16 @@ gulp.task('watch', function (callback) {
             .on('error', function (error) {
               console.error(String(error));
             });
+};
+
+gulp.task('watch', function (callback) {
+
+  var path;
+
+  path = ["public/js/*.js", "*.js"];
+  gulp.watch(path, function(e) {
+    console.log("---------JSLint Task---------");
+    return createJsLint(gulp, path);
   });
 });
 
