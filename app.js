@@ -21,7 +21,6 @@ var
 app.configure( function () {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.basicAuth('user', 'spa'));
   app.use(express.static(__dirname + '/public'));
   app.use(app.router);
 });
@@ -47,5 +46,5 @@ routes.configRoutes(app, server);
 server.listen(3000);
 console.log(
   'Express server listening on port %d in %s mode',
-  server.address().port, app.setting.env
+  server.address().port, app.settings.env
 );
