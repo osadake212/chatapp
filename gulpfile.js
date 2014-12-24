@@ -31,7 +31,7 @@ gulp.task('watch', function (callback) {
 
   var path;
 
-  path = ["public/js/*.js", "*.js"];
+  path = ["public/js/*.js", "*.js", "lib/**/*.js"];
   gulp.watch(path, function(e) {
     console.log("---------JSLint Task---------");
     return createJsLint(gulp, path);
