@@ -28,8 +28,8 @@ spa.data = (function () {
   getSio = function () {
     if (!stateMap.sio) {
       stateMap.sio = makeSio();
-      return stateMap.sio;
     }
+    return stateMap.sio;
   };
 
   initModule = function () {

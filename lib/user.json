@@ -19,7 +19,7 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "background-colo": {
+        "background-color": {
           "required": true,
           "type": "string",
           "minLength": 0,
