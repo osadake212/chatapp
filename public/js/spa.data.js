@@ -33,7 +33,6 @@ spa.data = (function () {
   };
 
   initModule = function () {
-    console.log("TODO: 実装");
   };
 
   return {

@@ -227,9 +227,9 @@ spa.avtr = (function () {
       // 処理をバインドする
       $container
         .bind('utap', onTapNav)
-        .bind('uheldstart', onHeldstartNav)
-        .bind('uheldmove', onHeldmoveNav)
-        .bind('uheldend', onHeldendNav);
+        .bind('udragstart', onHeldstartNav)
+        .bind('udragmove', onHeldmoveNav)
+        .bind('udragend', onHeldendNav);
 
         return true;
     };
