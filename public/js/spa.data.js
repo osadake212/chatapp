@@ -13,6 +13,14 @@ spa.data = (function () {
   makeSio = function () {
     var socket = io.connect('/chat');
 
+    socket.on('connect', function () {
+      console.log('connected.');
+    });
+
+    socket.on('disconnect', function () {
+      console.log('disconnected.');
+    });
+
     return {
       emit: function (event_name, data) {
         socket.emit(event_name, data);
@@ -33,6 +41,7 @@ spa.data = (function () {
   };
 
   initModule = function () {
+    stateMap.sio = makeSio();
   };
 
   return {
